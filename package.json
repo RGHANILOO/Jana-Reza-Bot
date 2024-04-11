@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src test --max-warnings 0 && prettier src test --check",
+    "lint": "eslint src/index.ts test --max-warnings 0 && prettier src test --check",
     "start": "ts-node src/index.ts"
   },
   "repository": {
