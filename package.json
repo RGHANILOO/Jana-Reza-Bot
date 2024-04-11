@@ -1,20 +1,44 @@
 {
-  "name": "jana-reza-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "discord": "^0.8.2",
-    "eslint": "^9.0.0"
-  },
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
-  }
+    "name": "jana-reza-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://github.com:fac31/Jana-Reza-Bot.git"
+    },
+    "keywords": [],
+    "contributors": [
+        {
+            "name": "Reza Ghaniloo",
+            "email": "email@email.com",
+            "url": "https://github.com/rghaniloo"
+        },
+        {
+            "name": "Jana Gerrard",
+            "email": "email@email.com",
+            "url": "https://github.com/sulphite"
+        }
+    ],
+    "license": "ISC",
+    "bug": {
+        "url": "https://github.com/fac31/Jana-Reza-Bot/issues"
+    },
+    "homepage": "https://github.com/fac31/Jana-Reza-Bot#jana-reza-bot",
+    "dependencies": {
+        "discord.js": "^14.14.1",
+        "dotenv": "^16.4.5"
+    },
+    "devDependencies": {
+        "@nhcarrigan/eslint-config": "^3.2.0",
+        "@nhcarrigan/prettier-config": "^3.2.0",
+        "@nhcarrigan/typescript-config": "^3.0.0",
+        "eslint": "^9.0.0",
+        "prettier": "^3.2.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    }
 }
