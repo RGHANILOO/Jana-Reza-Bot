@@ -1,5 +1,5 @@
 import "dotenv/config"
-const { Client, Intents } = require('discord.js');
+import {Client, Intents} from "discord.js"
 
 const token = process.env.TOKEN;
 const client = new Client({
