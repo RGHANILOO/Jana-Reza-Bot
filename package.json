@@ -35,9 +35,6 @@
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "@nhcarrigan/eslint-config": "^3.2.0",
-    "@nhcarrigan/prettier-config": "^3.2.0",
-    "@nhcarrigan/typescript-config": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
     "eslint": "^8.57.0",
