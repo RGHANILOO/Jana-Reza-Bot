@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts",
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -33,12 +35,14 @@
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "@nhcarrigan/eslint-config": "^3.2.0",
-    "@nhcarrigan/prettier-config": "^3.2.0",
-    "@nhcarrigan/typescript-config": "^3.0.0",
-    "eslint": "^8.0.0",
+    "@eslint/js": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "eslint": "^8.57.0",
+    "globals": "^15.0.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.6.0"
   }
 }
