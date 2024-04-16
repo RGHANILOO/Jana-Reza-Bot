@@ -1,6 +1,6 @@
 name: linter
 on:
-  pull-request:
+  pull_request:
 
 jobs:
   eslint:
