@@ -40,6 +40,3 @@ dist/**/*
 # ignore yarn.lock
 yarn.lock
 
-
-src/listeners
-deploy-commands.ts
