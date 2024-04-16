@@ -1,13 +1,17 @@
 import 'dotenv/config'
-import { Client, Intents } from "discord.js"
+import { Client} from "discord.js"
+import ready from './listeners/ready';
 
 const token = process.env.TOKEN;
+if (!token) {
+    console.error('No token provided');
+    process.exit(1);
+}
+console.log('FACTROID IS starting .....')
 const client = new Client({
-    intents: [Intents.FLAGS.GUILDS],
+    intents: []
 
 });
-client.once("ready", () => {
-    console.log("   Ready!");
-})
 
+ready(client);
 client.login(token);
