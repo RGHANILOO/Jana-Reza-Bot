@@ -1,6 +1,6 @@
 import { Command } from "../Command";
 import { Howdy } from "./commands/Howdy";
 
-export const commands: Command[] = [
+export const Commands: Command[] = [
     Howdy
 ];
