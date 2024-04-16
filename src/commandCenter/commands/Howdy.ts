@@ -6,7 +6,7 @@ export const Howdy: Command = {
     description: "Howdy command",
     type: ApplicationCommandType.ChatInput,
     run: async (client: Client, interaction: CommandInteraction) => {
-        const content = "Howdy!👋 How are you doing today?";
+        const content = `Howdy!👋 How are you doing today ${client.user?.username}?`;
 
         await interaction.followUp({
             //https://discordjs.guide/slash-commands/response-methods.html#ephemeral-responses
