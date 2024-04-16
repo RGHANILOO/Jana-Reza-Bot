@@ -3,6 +3,6 @@ import { CommandInteraction, ChatInputApplicationCommandData, Client } from "dis
 /**
  * defining the structure of the slash command 
  */
-export  interface Command extends ChatInputApplicationCommandData{
+export type Command = ChatInputApplicationCommandData & {
     run: (client: Client, interaction: CommandInteraction) => void;
-}
+};
