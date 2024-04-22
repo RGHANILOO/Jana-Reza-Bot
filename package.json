@@ -1,52 +1,52 @@
 {
-  "name": "jana-reza-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ignore-path .eslintignore --ext .js,.ts && prettier --check . ",
-    "start": "ts-node src/index.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://github.com:fac31/Jana-Reza-Bot.git"
-  },
-  "keywords": [],
-  "contributors": [
-    {
-      "name": "Reza Ghaniloo",
-      "email": "email@email.com",
-      "url": "https://github.com/rghaniloo"
+    "name": "jana-reza-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint src --ignore-path .eslintignore --ext .js,.ts && prettier ./src --write ",
+        "start": "ts-node src/index.ts"
     },
-    {
-      "name": "Jana Gerrard",
-      "email": "email@email.com",
-      "url": "https://github.com/sulphite"
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://github.com:fac31/Jana-Reza-Bot.git"
+    },
+    "keywords": [],
+    "contributors": [
+        {
+            "name": "Reza Ghaniloo",
+            "email": "email@email.com",
+            "url": "https://github.com/rghaniloo"
+        },
+        {
+            "name": "Jana Gerrard",
+            "email": "email@email.com",
+            "url": "https://github.com/sulphite"
+        }
+    ],
+    "license": "ISC",
+    "bug": {
+        "url": "https://github.com/fac31/Jana-Reza-Bot/issues"
+    },
+    "homepage": "https://github.com/fac31/Jana-Reza-Bot#jana-reza-bot",
+    "dependencies": {
+        "chrono-node": "^2.7.5",
+        "dayjs": "^1.11.10",
+        "discord.js": "^14.14.1",
+        "dotenv": "^16.4.5",
+        "node-fetch": "^3.3.2",
+        "openai": "^4.38.3"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.0.0",
+        "@typescript-eslint/eslint-plugin": "^7.6.0",
+        "@typescript-eslint/parser": "^7.6.0",
+        "eslint": "^8.57.0",
+        "globals": "^15.0.0",
+        "prettier": "^3.2.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5",
+        "typescript-eslint": "^7.6.0"
     }
-  ],
-  "license": "ISC",
-  "bug": {
-    "url": "https://github.com/fac31/Jana-Reza-Bot/issues"
-  },
-  "homepage": "https://github.com/fac31/Jana-Reza-Bot#jana-reza-bot",
-  "dependencies": {
-    "chrono-node": "^2.7.5",
-    "dayjs": "^1.11.10",
-    "discord.js": "^14.14.1",
-    "dotenv": "^16.4.5",
-    "node-fetch": "^3.3.2",
-    "openai": "^4.38.3"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.6.0",
-    "@typescript-eslint/parser": "^7.6.0",
-    "eslint": "^8.57.0",
-    "globals": "^15.0.0",
-    "prettier": "^3.2.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.6.0"
-  }
 }

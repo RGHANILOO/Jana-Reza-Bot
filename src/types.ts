@@ -1,3 +1,3 @@
-export type Prompt ={
-    content: string; // Other properties if needed
-  }
+export type Prompt = {
+    content: string // Other properties if needed
+}
