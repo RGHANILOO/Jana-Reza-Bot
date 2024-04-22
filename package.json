@@ -31,6 +31,8 @@
   },
   "homepage": "https://github.com/fac31/Jana-Reza-Bot#jana-reza-bot",
   "dependencies": {
+    "chrono-node": "^2.7.5",
+    "dayjs": "^1.11.10",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5"
   },
