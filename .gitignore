@@ -39,5 +39,5 @@ dist/**/*
 
 # ignore yarn.lock
 yarn.lock
-
+prod
 pnpm-lock.yaml

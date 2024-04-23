@@ -1,7 +1,6 @@
-import { Command } from "../Command";
-import { Howdy } from "./commands/Howdy";
-import { Time } from "./commands/Time";
+import { Command } from '../Command'
+import { Howdy } from './commands/Howdy'
+import { Assistant } from './commands/Assistant'
+import { Time } from './commands/Time'
 
-export const Commands: Command[] = [
-  Howdy, Time
-];
+export const Commands: Command[] = [Howdy, Time, Assistant]
