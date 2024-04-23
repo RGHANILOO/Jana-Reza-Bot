@@ -1,7 +1,7 @@
 import * as chrono from 'chrono-node'
 
 export const stringToTime = (input: string, created: Date): Date => {
-    let time = chrono.parseDate(
+    const time = chrono.parseDate(
         input,
         { instant: created },
         { forwardDate: true }
