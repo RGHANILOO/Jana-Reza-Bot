@@ -9,7 +9,7 @@ import 'dotenv/config'
 import { fetchOpenAIChatCompletion } from '../../openai'
 
 export const Assistant: Command = {
-    name: 'asssistant',
+    name: 'assistant',
     description: 'assistant command',
     type: ApplicationCommandType.ChatInput,
     options: [
