@@ -6,7 +6,7 @@ import {
 } from 'discord.js'
 import { Command } from '../../Command'
 import dayjs from 'dayjs'
-import * as chrono from 'chrono-node'
+import { stringToTime } from '../utils/stringToTime'
 
 export const Time: Command = {
     name: 'time',
@@ -22,18 +22,13 @@ export const Time: Command = {
         },
     ],
     run: async (_: Client, interaction: CommandInteraction) => {
-        const userInput = interaction.options.get('when')?.value
+        const userInput = interaction.options.get('when')?.value as string
         let targetTime
-        console.log(userInput)
-        if (userInput) {
-            targetTime = chrono.parseDate(
-                userInput.toString(),
-                { instant: interaction.createdAt },
-                { forwardDate: true }
-            )
-        } else {
+        try {
+            targetTime = stringToTime(userInput, interaction.createdAt)
+        } catch (error) {
+            console.error(error)
             targetTime = null
-            throw new Error('couldnt get user input')
         }
         const content = targetTime
             ? `Here's your timestamp for <t:${dayjs(targetTime).unix()}> \`<t:${dayjs(targetTime).unix()}>\``
