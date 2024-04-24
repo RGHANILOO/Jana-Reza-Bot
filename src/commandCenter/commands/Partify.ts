@@ -9,7 +9,8 @@ import { stringToTime } from '../utils/stringToTime'
 import dayjs from 'dayjs'
 import { fetchOpenAIChatCompletion } from '../../openai'
 
-const partySystemPrompt = "You are specialised in generating fun party ideas and games that are doable over voice chats like discord. When prompted by a user you will respond with a JSON object containing a name and description of the party."
+const partySystemPrompt =
+    'You are specialised in generating fun party ideas and games that are doable over voice chats like discord. When prompted by a user you will respond with a JSON object containing a name and description of the party.'
 
 export const Partify: Command = {
     name: 'partify',
@@ -31,17 +32,20 @@ export const Partify: Command = {
         },
     ],
     run: async (_: Client, interaction: CommandInteraction) => {
-      console.log(interaction.options.get("theme")?.value)
-      const timeInput = interaction.options.get("when")?.value as string
-      const targetTime = stringToTime(timeInput, interaction.createdAt)
+        console.log(interaction.options.get('theme')?.value)
+        const timeInput = interaction.options.get('when')?.value as string
+        const targetTime = stringToTime(timeInput, interaction.createdAt)
 
-      const generatedPartyIdea = await fetchOpenAIChatCompletion(interaction.options.get("theme")?.value as string, partySystemPrompt)
-      console.log(JSON.parse(generatedPartyIdea))
+        const generatedPartyIdea = await fetchOpenAIChatCompletion(
+            interaction.options.get('theme')?.value as string,
+            partySystemPrompt
+        )
+        console.log(JSON.parse(generatedPartyIdea))
 
-      // code to generate event goes here
+        // code to generate event goes here
 
-      await interaction.followUp({
-        content: `OK! You've got a party coming up at <t:${dayjs(targetTime).unix()}>`
-      })
+        await interaction.followUp({
+            content: `OK! You've got a party coming up at <t:${dayjs(targetTime).unix()}>`,
+        })
     },
 }

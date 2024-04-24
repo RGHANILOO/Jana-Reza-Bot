@@ -9,7 +9,8 @@ if (!API_KEY) {
 const openai = new OpenAI({ apiKey: process.env.API_KEY })
 
 export async function fetchOpenAIChatCompletion(
-    userInput: string, systemInput: string ='You are a helpful assistant.'
+    userInput: string,
+    systemInput: string = 'You are a helpful assistant.'
 ): Promise<string> {
     try {
         const completion = await openai.chat.completions.create({
