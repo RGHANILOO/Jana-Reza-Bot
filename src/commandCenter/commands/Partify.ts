@@ -3,6 +3,9 @@ import {
     Client,
     ApplicationCommandOptionType,
     ApplicationCommandType,
+    GuildScheduledEventCreateOptions,
+    GuildScheduledEventEntityType,
+    GuildScheduledEventPrivacyLevel,
 } from 'discord.js'
 import { Command } from '../../Command'
 import { stringToTime } from '../utils/stringToTime'
@@ -41,12 +44,21 @@ export const Partify: Command = {
             interaction.options.get('theme')?.value as string,
             partySystemPrompt
         )
-        const partyJson = JSON.parse(generatedPartyIdea)
+        const partyJson: {name: string; description: string;} = JSON.parse(generatedPartyIdea)
         console.log(partyJson)
         // this gives us an object to use in creating the event
         // { name: string, description: string }
+        const newEvent: GuildScheduledEventCreateOptions = {
+          ...partyJson,
+          scheduledStartTime: targetTime,
+          scheduledEndTime: dayjs(targetTime).add(1,"hour").toDate(),
+          entityType: GuildScheduledEventEntityType.External,
+          privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+          entityMetadata: {location: "voice channel"}
+        }
 
         // code to generate event goes here
+        interaction.guild?.scheduledEvents.create(newEvent)
 
         await interaction.followUp({
             content: `OK! You've got a party coming up at <t:${dayjs(targetTime).unix()}>`,
