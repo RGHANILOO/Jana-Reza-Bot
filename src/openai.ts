@@ -9,13 +9,14 @@ if (!API_KEY) {
 const openai = new OpenAI({ apiKey: process.env.API_KEY })
 
 export async function fetchOpenAIChatCompletion(
-    userInput: string
+    userInput: string,
+    systemInput: string = 'You are a helpful assistant.'
 ): Promise<string> {
     try {
         const completion = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
             messages: [
-                { role: 'system', content: 'You are a helpful assistant.' },
+                { role: 'system', content: systemInput },
                 { role: 'user', content: userInput },
             ],
             stream: true, // Enable streaming for chunks
