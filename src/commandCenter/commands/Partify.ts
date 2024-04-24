@@ -19,7 +19,8 @@ export const Partify: Command = {
     options: [
         {
             name: 'theme',
-            description: 'what kind of party? e.g. "halloween skeletons party games"',
+            description:
+                'what kind of party? e.g. "halloween skeletons party games"',
             type: ApplicationCommandOptionType.String,
             required: true,
         },
@@ -40,7 +41,7 @@ export const Partify: Command = {
             interaction.options.get('theme')?.value as string,
             partySystemPrompt
         )
-        let partyJson = JSON.parse(generatedPartyIdea)
+        const partyJson = JSON.parse(generatedPartyIdea)
         console.log(partyJson)
         // this gives us an object to use in creating the event
         // { name: string, description: string }
