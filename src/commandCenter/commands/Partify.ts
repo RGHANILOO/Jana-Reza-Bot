@@ -11,7 +11,7 @@ import { fetchOpenAIChatCompletion } from '../../openai'
 
 const partySystemPrompt = "You are specialised in generating fun party ideas and games that are doable over voice chats like discord. When prompted by a user you will respond with a JSON object containing a name and description of the party."
 
-export const Party: Command = {
+export const Partify: Command = {
     name: 'partify',
     description: 'start a party!',
     type: ApplicationCommandType.ChatInput,
