@@ -6,6 +6,9 @@ import {
     GuildScheduledEventCreateOptions,
     GuildScheduledEventEntityType,
     GuildScheduledEventPrivacyLevel,
+    ChannelType,
+    VoiceChannel,
+    // Snowflake,
 } from 'discord.js'
 import { Command } from '../../Command'
 import { stringToTime } from '../utils/stringToTime'
@@ -36,9 +39,23 @@ export const Partify: Command = {
         },
     ],
     run: async (_: Client, interaction: CommandInteraction) => {
-        console.log(interaction.options.get('theme')?.value)
         const timeInput = interaction.options.get('when')?.value as string
         const targetTime = stringToTime(timeInput, interaction.createdAt)
+        const guildChanManager = interaction.guild?.channels
+        if (guildChanManager === undefined) {
+          throw new Error("can't get guildchannelmanager")
+        }
+        // console.log("count",guildChanManager.channelCountWithoutThreads)
+        const channels = await guildChanManager.fetch()
+        let voiceChan = channels.find(chan => chan?.type == ChannelType.GuildVoice) as VoiceChannel
+        if (voiceChan === undefined || voiceChan === null) {
+          voiceChan = await guildChanManager.create({
+            name: "party",
+            type: ChannelType.GuildVoice,
+          })
+        }
+
+
 
         const generatedPartyIdea = await fetchOpenAIChatCompletion(
             interaction.options.get('theme')?.value as string,
@@ -48,13 +65,16 @@ export const Partify: Command = {
         console.log(partyJson)
         // this gives us an object to use in creating the event
         // { name: string, description: string }
+
+
         const newEvent: GuildScheduledEventCreateOptions = {
           ...partyJson,
           scheduledStartTime: targetTime,
-          scheduledEndTime: dayjs(targetTime).add(1,"hour").toDate(),
-          entityType: GuildScheduledEventEntityType.External,
+          // scheduledEndTime: dayjs(targetTime).add(1,"hour").toDate(),
+          entityType: GuildScheduledEventEntityType.Voice,
           privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
-          entityMetadata: {location: "voice channel"}
+          channel: voiceChan
+          // entityMetadata: {location: "voice channel"}
         }
 
         // code to generate event goes here
