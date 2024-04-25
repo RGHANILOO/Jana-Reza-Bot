@@ -8,10 +8,10 @@ import {
     GuildScheduledEventPrivacyLevel,
     ChannelType,
     VoiceChannel,
+    GuildScheduledEvent,
 } from 'discord.js'
 import { Command } from '../../Command'
 import { stringToTime } from '../utils/stringToTime'
-import dayjs from 'dayjs'
 import { fetchOpenAIChatCompletion } from '../../openai'
 
 const partySystemPrompt =
@@ -41,39 +41,40 @@ export const Partify: Command = {
         const timeInput = interaction.options.get('when')?.value as string
         const targetTime = stringToTime(timeInput, interaction.createdAt)
         if (interaction.guild === null) {
-          throw new Error("can't get guild")
+            throw new Error("can't get guild")
         }
         const guild = interaction.guild
         const channels = await guild.channels.fetch()
-        let voiceChan = channels.find(chan => chan?.type == ChannelType.GuildVoice) as VoiceChannel
+        let voiceChan = channels.find(
+            (chan) => chan?.type == ChannelType.GuildVoice
+        ) as VoiceChannel
         if (voiceChan === undefined || voiceChan === null) {
-          voiceChan = await guild.channels.create({
-            name: "party",
-            type: ChannelType.GuildVoice,
-          })
+            voiceChan = await guild.channels.create({
+                name: 'party',
+                type: ChannelType.GuildVoice,
+            })
         }
 
         const generatedPartyIdea = await fetchOpenAIChatCompletion(
             interaction.options.get('theme')?.value as string,
             partySystemPrompt
         )
-        const partyJson: {name: string; description: string;} = JSON.parse(generatedPartyIdea)
-        console.log(partyJson)
+        const partyJson: { name: string; description: string } =
+            JSON.parse(generatedPartyIdea)
         // this gives us an object to use in creating the event
-        // { name: string, description: string }
 
         const newEventDetails: GuildScheduledEventCreateOptions = {
-          ...partyJson,
-          scheduledStartTime: targetTime,
-          entityType: GuildScheduledEventEntityType.Voice,
-          privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
-          channel: voiceChan
+            ...partyJson,
+            scheduledStartTime: targetTime,
+            entityType: GuildScheduledEventEntityType.Voice,
+            privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+            channel: voiceChan,
         }
 
-        interaction.guild.scheduledEvents.create(newEventDetails)
-
-        await interaction.followUp({
-            content: `OK! You've got a party coming up at <t:${dayjs(targetTime).unix()}>`,
-        })
+        const newEvent: GuildScheduledEvent =
+            await interaction.guild.scheduledEvents.create(newEventDetails)
+        interaction.followUp(
+            `OK! Here's what I came up with! 🎉 ${newEvent.url}`
+        )
     },
 }
